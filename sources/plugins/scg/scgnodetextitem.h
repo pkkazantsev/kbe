@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -32,6 +32,7 @@ class QGraphicsSceneMouseEvent;
 class SCgNodeTextItem : public SCgTextItem
 {
     Q_OBJECT
+    friend class SCgNode;
 
 public:
     //! Object type
@@ -43,18 +44,22 @@ public:
 
     //! Return a type of graphics item as integer
     virtual int type() const { return Type; }
-protected:
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 
-    void setTextPos(SCgNode::IdentifierPosition pos);
-    SCgNode::IdentifierPosition textPos() const { return mTextPos; }
+    void setTextPos(const QPointF &pos);
+
+    void setPlainText(const QString &text);
+
+protected:
+    virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+
+    void setNodeTextPos(SCgNode::IdentifierPosition pos);
+    SCgNode::IdentifierPosition nodeTextPos() const;
+
     void updateTextPos(SCgNode::IdentifierPosition pos);
     SCgNode::IdentifierPosition posToIdtfPos(const QPointF &point) const;
 
     SCgNode::IdentifierPosition mTextPos;
     SCgNode *mParentItem;
-
-	friend class SCgNode;
 };
 
 #endif // SCGNODETEXTITEM_H

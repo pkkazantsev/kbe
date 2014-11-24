@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -70,7 +70,7 @@ protected:
 
 #define MAJOR   0
 #define MINOR   3
-#define PATCH   0
+#define PATCH   1
 #define REVISION    0
 #define RC      ""
 #define CODENAME    "integrator"

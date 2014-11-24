@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -106,3 +106,32 @@ void SCgTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsTextItem::mouseReleaseEvent(event);
 }
 
+void SCgTextItem::setTextPos(const QPointF &pos)
+{
+    setPos(pos);
+}
+
+QPointF SCgTextItem::textPos() const
+{
+    return QGraphicsTextItem::pos();
+}
+
+void SCgTextItem::setPos(const QPointF &pos)
+{
+    QGraphicsTextItem::setPos(pos);
+}
+
+void SCgTextItem::setPos(qreal x, qreal y)
+{
+    QGraphicsTextItem::setPos(x,y);
+}
+
+QPointF SCgTextItem::pos() const
+{
+    return QGraphicsTextItem::pos();
+}
+
+void SCgTextItem::setPlainText(const QString &text)
+{
+    QGraphicsTextItem::setPlainText(text);
+}

@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -64,12 +64,21 @@ public:
 
     //! Return a type of graphics item as integer
     virtual int type() const { return Type; }
+
+    virtual void setTextPos(const QPointF &pos);
+    QPointF textPos() const;
+
+    virtual void setPlainText(const QString &text);
+
 protected:
     virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
     virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
     virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
     virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+    void setPos(const QPointF &pos);
+    void setPos(qreal x, qreal y);
+    QPointF pos() const;
 };
 
 #endif // SCGTEXTITEM_H

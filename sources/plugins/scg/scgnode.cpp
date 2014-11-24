@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -186,7 +186,7 @@ QPointF SCgNode::cross(const QPointF &from, float dot) const
     if (!mIsContentVisible)
     {
         QVector2D vec(from - scenePos());
-        p = vec.normalized().toPointF() * (mSize.width() / 2.f + 5.f);
+        p = vec.normalized().toPointF() * (mSize.width() / 2.f);
     }else
     {
 
@@ -379,6 +379,7 @@ void SCgNode::setIdtfValue(const QString &idtf)
             mTextItem->setZValue(7);
             mTextItem->setDefaultTextColor(scg_cfg_get_value_color(scg_text_element_color_normal));
         }
+
         mTextItem->setPlainText(mIdtfValue);
     }
     else if (mTextItem)
@@ -399,7 +400,7 @@ SCgNode::IdentifierPosition SCgNode::idtfPos() const
     Q_CHECK_PTR(pItem);
 
     if (pItem)
-        return pItem->textPos();
+        return pItem->nodeTextPos();
 
     return DEFAULT_IDTF_POS;
 }
@@ -414,5 +415,5 @@ void SCgNode::setIdtfPos(IdentifierPosition pos)
     Q_CHECK_PTR(pItem);
 
     if (pItem)
-        pItem->setTextPos(pos);
+        pItem->setNodeTextPos(pos);
 }

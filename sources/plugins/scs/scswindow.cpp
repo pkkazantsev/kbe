@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -38,12 +38,12 @@ along with OSTIS.  If not, see <http://www.gnu.org/licenses/>.
 #include <QShortcut>
 #include <QTextCodec>
 
-SCsWindow::SCsWindow(const QString& _windowTitle, QWidget *parent):
-    QWidget(parent),
-    mEditor(0),
-    mHighlighter(0),
-    mIsSaved(false),
-    mErrorTable(0)
+SCsWindow::SCsWindow(const QString& _windowTitle, QWidget *parent)
+    : QWidget(parent)
+    , mEditor(0)
+    , mHighlighter(0)
+    , mErrorTable(0)
+    , mIsSaved(false)
 {
 
 
@@ -86,6 +86,8 @@ SCsWindow::SCsWindow(const QString& _windowTitle, QWidget *parent):
 
 
     connect(mEditor, SIGNAL(textChanged()), this, SLOT(textChanged()));
+
+    setWindowTitle(_windowTitle);
 }
 
 SCsWindow::~SCsWindow()
@@ -131,6 +133,8 @@ bool SCsWindow::loadFromFile(const QString &fileName)
     }
 
     QTextStream in(&fileIn);
+    in.setCodec("UTF-8");
+
     mEditor->document()->setPlainText(in.readAll());
     mEditor->setDocumentPath(fileName);
     fileIn.close();
@@ -156,6 +160,8 @@ bool SCsWindow::saveToFile(const QString &fileName)
         return false;
     }
     QTextStream out(&fileOut);
+    out.setCodec("UTF-8");
+
     out << mEditor->document()->toPlainText();
     fileOut.close();
 

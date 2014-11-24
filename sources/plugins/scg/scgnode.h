@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -38,12 +38,13 @@ friend class SCgBus;
 public:
     enum { Type = UserType + 2 };
     typedef enum
-	{
-		BottomRight = 0,
-		BottomLeft,
-		TopLeft,
-		TopRight
-    }IdentifierPosition;
+    {
+        BottomRight = 0,
+        BottomLeft,
+        TopLeft,
+        TopRight
+    } IdentifierPosition;
+
     /*! Type for qgraphicsitem_cast
       */
     int type() const { return Type; }
@@ -52,8 +53,8 @@ public:
 
 	void setIdtfValue(const QString &idtf);
 
-	void setIdtfPos(IdentifierPosition pos);
-	IdentifierPosition idtfPos() const;
+    void setIdtfPos(IdentifierPosition pos);
+    IdentifierPosition idtfPos() const;
 
 	QRectF boundingRect() const;
 

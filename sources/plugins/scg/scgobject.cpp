@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -231,7 +231,8 @@ void SCgObject::setIdtfValue(const QString &idtf)
             //scene()->addItem(mTextItem);
         }
         mTextItem->setPlainText(mIdtfValue);
-    } else if (mTextItem)
+    }
+    else if (mTextItem)
     {
         delete mTextItem;
         mTextItem = 0;
@@ -305,3 +306,13 @@ void SCgObject::undel(SCgScene *scene)
     scene->addItem(this);
 }
 
+
+void SCgObject::setIdtfPos(const QPointF &pos)
+{
+    mTextItem->setTextPos(pos);
+}
+
+QPointF SCgObject::idtfPos() const
+{
+    return mTextItem->textPos();
+}

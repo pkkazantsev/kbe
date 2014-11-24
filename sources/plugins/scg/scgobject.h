@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -106,6 +106,10 @@ public:
     void setBoundingBoxVisible(bool value);
     //! Check if bounding box is visible
     bool isBoundingBoxVisible() const;
+
+    virtual void setIdtfPos(const QPointF &pos);
+    QPointF idtfPos() const;
+
 //////////////////////////
 /* Working with types */
 public:

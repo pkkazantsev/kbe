@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -40,11 +40,11 @@ along with OSTIS.  If not, see <http://www.gnu.org/licenses/>.
 
 #define SPACE_FOR_ERROR_LABEL 20
 
-SCsCodeEditor::SCsCodeEditor(QWidget *parent, SCsErrorTableWidget *errorTable) :
-	 QPlainTextEdit(parent)
-    ,mLastCursorPosition(0)
-	,mIsTextInsert(false)
-	,mErrorTable(errorTable)
+SCsCodeEditor::SCsCodeEditor(QWidget *parent, SCsErrorTableWidget *errorTable)
+    : QPlainTextEdit(parent)
+    , mErrorTable(errorTable)
+    , mLastCursorPosition(0)
+    , mIsTextInsert(false)
 {
     mLineNumberArea = new SCsLineNumberArea(this);
 	mAnalyzer = new SCsCodeAnalyzer(this);
@@ -77,6 +77,7 @@ SCsCodeEditor::SCsCodeEditor(QWidget *parent, SCsErrorTableWidget *errorTable) :
 
 void SCsCodeEditor::setDocumentPath(const QString &path)
 {
+    Q_UNUSED(path);
 	mAnalyzer->parse(toPlainText(), (QStandardItemModel*)mCompleter->model());
 }
 

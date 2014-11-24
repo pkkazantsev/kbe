@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -114,7 +114,7 @@ void SCgPair::updateShape()
     {
         Q_ASSERT(mPoints.size() > 1);
         QPointF text_pos = (mPoints[0] + mPoints[1]) / 2.f;
-        mTextItem->setPos(text_pos);
+        mTextItem->setTextPos(text_pos);
     }
 }
 

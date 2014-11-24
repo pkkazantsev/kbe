@@ -4,12 +4,7 @@
 
 DESTDIR = ../bin
 
-CONFIG(debug, debug|release) {
-    TARGET = kbe_d
-    DEFINES += _DEBUG
-} else {
-    TARGET = kbe
-}
+QT      += xml
 
 TEMPLATE = app
 
@@ -20,7 +15,10 @@ SOURCES += \
     config.cpp \
     pluginmanager.cpp \
     guidedialog.cpp \
-    newfiledialog.cpp
+    newfiledialog.cpp \
+    projectmanagerview.cpp \
+    projectmanagermodel.cpp \
+    projectmanagerdockwidget.cpp
 
 HEADERS += version.h \
     platform.h \
@@ -31,7 +29,10 @@ HEADERS += version.h \
     pluginmanager.h \
     interfaces/editorinterface.h \
     guidedialog.h \
-    newfiledialog.h
+    newfiledialog.h \
+    projectmanagerview.h \
+    projectmanagermodel.h \
+    projectmanagerdockwidget.h
 
 FORMS += mainwindow.ui
 
@@ -51,3 +52,6 @@ RC_FILE = kbe.rc
 
 OBJECTS_DIR = obj
 MOC_DIR = moc
+
+OTHER_FILES += \
+    media/stylesheets/projectmanager.qss

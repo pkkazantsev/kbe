@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -52,11 +52,11 @@ void SCgNodeTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 
     if ((flags() & QGraphicsItem::ItemIsMovable) != 0)
-        setTextPos(posToIdtfPos(mapToParent(event->pos())));
+        setNodeTextPos(posToIdtfPos(mapToParent(event->pos())));
 }
 
 
-void SCgNodeTextItem::setTextPos(SCgNode::IdentifierPosition pos)
+void SCgNodeTextItem::setNodeTextPos(SCgNode::IdentifierPosition pos)
 {
     if (mTextPos != pos)
     {
@@ -69,43 +69,67 @@ SCgNode::IdentifierPosition SCgNodeTextItem::posToIdtfPos(const QPointF &point) 
 {
     SCgNode::IdentifierPosition idtfPos = SCgNode::BottomRight;
 
-	qreal x = point.x();
-	qreal y = point.y();
+    qreal x = point.x();
+    qreal y = point.y();
 
-	if (qFuzzyIsNull(x))
+    if (qFuzzyIsNull(x))
         x += 1;
-	if (qFuzzyIsNull(y))
+    if (qFuzzyIsNull(y))
         y += 1;
 
     if (x > 0)
+    {
         if (y > 0)
             idtfPos = SCgNode::BottomRight;
-		else
+        else
             idtfPos = SCgNode::TopRight;
-	else
+    }
+    else
+    {
         if (y > 0)
             idtfPos = SCgNode::BottomLeft;
-		else
+        else
             idtfPos = SCgNode::TopLeft;
+    }
 
-	return idtfPos;
+    return idtfPos;
 }
 
 
 void SCgNodeTextItem::updateTextPos(SCgNode::IdentifierPosition pos)
 {
-	QRectF rect = boundingRect();
-	QRectF parentRect =  mParentItem->boundingRect();
+    QRectF rect = boundingRect();
+    QRectF parentRect =  mParentItem->boundingRect();
 
-	QPointF newPos = parentRect.bottomRight() - QPointF(rect.x(),rect.y());
+    QPointF newPos;
 
     if (pos == SCgNode::BottomLeft || pos == SCgNode::TopLeft)
-		newPos.rx() = parentRect.left() - rect.width() - rect.x();
+        newPos.setX(parentRect.left() - rect.width() + 8);
+    else
+        newPos.setX(parentRect.right() - 8);
 
     if (pos == SCgNode::TopLeft || pos == SCgNode::TopRight)
-		newPos.ry() = parentRect.top() - rect.height() - rect.y();
+        newPos.setY(parentRect.top() - rect.height() + 8);
+    else
+        newPos.setY(parentRect.bottom() - 8);
 
-	setPos(newPos);
+    setPos(newPos);
     mParentItem->setSelected(true);
     setSelected(false);
+}
+
+SCgNode::IdentifierPosition SCgNodeTextItem::nodeTextPos() const
+{
+    return mTextPos;
+}
+
+void SCgNodeTextItem::setTextPos(const QPointF &pos)
+{
+    setNodeTextPos(posToIdtfPos(pos));
+}
+
+void SCgNodeTextItem::setPlainText(const QString &text)
+{
+    SCgTextItem::setPlainText(text);
+    updateTextPos(mTextPos);
 }

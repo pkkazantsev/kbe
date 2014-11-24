@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ class SCsCodeErrorAnalyzer : public QObject
     Q_OBJECT
 public:
     explicit SCsCodeErrorAnalyzer(SCsCodeEditor* editor, SCsErrorTableWidget *errorTable);
-    void parse(QString &text);
+    void parse(const QString &text);
 
 private:
 	void showError(const QVector<SCsParserException> &exceptions) const;

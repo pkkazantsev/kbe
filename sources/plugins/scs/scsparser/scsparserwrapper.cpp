@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -244,7 +244,7 @@ QSharedPointer<SCsParserTokenArray> SCsParser::getTokens(const QString &text) co
 
 	pANTLR3_COMMON_TOKEN tok;
 	pANTLR3_STRING tokText;
-	for(int i=0; i<tokens->count; i++)
+    for(uint i=0; i<tokens->count; i++)
 	{
 		tok = (pANTLR3_COMMON_TOKEN) tokens->elements[i].element; 
 		tokText = tok->getText(tok);

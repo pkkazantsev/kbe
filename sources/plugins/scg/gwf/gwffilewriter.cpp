@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ bool GWFFileWriter::save(QString file_name, QObject *input)
                  return false;
              }
         stream.setDevice(&fileOut);
-        stream.startWriting("windows-1251");
+        stream.startWriting("UTF-8");
 
         QList<QGraphicsItem *>	items = scene->items ();
         QGraphicsItem * item;

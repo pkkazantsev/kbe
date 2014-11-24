@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -70,7 +70,7 @@ public:
 	};
 	SCsParserToken();
 	SCsParserToken(int tokenType);
-	SCsParserToken(int tokenType, QString tokenText, int line, int positionInLine);
+    SCsParserToken(int tokenType, const QString &tokenText, int line, int positionInLine);
 	SCsParserToken(const SCsParserToken& copy);
 	SCsParserToken& operator=(const SCsParserToken& copy);
 	virtual ~SCsParserToken();

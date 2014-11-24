@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,16 +23,18 @@ along with OSTIS.  If not, see <http://www.gnu.org/licenses/>.
 #include "scgcommandidtfmove.h"
 #include "scgtextitem.h"
 
-SCgCommandIdtfMove::SCgCommandIdtfMove(SCgTextItem *idtf,
+SCgCommandIdtfMove::SCgCommandIdtfMove(SCgObject *obj,
                                        SCgScene *scene,
                                        const QPointF& oldPosition,
                                        const QPointF& newPosition,
                                        QUndoCommand *parent)
     : SCgBaseCommand(scene, 0, parent)
-    , mIdtfItem(idtf)
+    , mObject(obj)
     , mOldPosition(oldPosition)
     , mNewPosition(newPosition)
 {
+    Q_ASSERT(obj);
+
     setText(QObject::tr("Move identifier"));
 }
 
@@ -42,12 +44,14 @@ SCgCommandIdtfMove::~SCgCommandIdtfMove()
 
 void SCgCommandIdtfMove::redo()
 {
-    mIdtfItem->setPos(mNewPosition);
+    if (mObject)
+        mObject->setIdtfPos(mNewPosition);
     SCgBaseCommand::redo();
 }
 
 void SCgCommandIdtfMove::undo()
 {
-    mIdtfItem->setPos(mOldPosition);
+    if (mObject)
+        mObject->setIdtfPos(mOldPosition);
     SCgBaseCommand::undo();
 }

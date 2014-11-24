@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ public:
     * @param newPosition    Position of the identifier after moving
     * @param parent         Pointer to parent's undo command
     */
-    explicit SCgCommandIdtfMove(SCgTextItem *idtf,
+    explicit SCgCommandIdtfMove(SCgObject *obj,
                                 SCgScene *scene,
                                 const QPointF& oldPosition,
                                 const QPointF& newPosition,
@@ -55,7 +55,7 @@ protected:
 
 private:
     //! Item that store object's identifier
-    SCgTextItem *mIdtfItem;
+    SCgObject *mObject;
     //! Position before moving
     QPointF mOldPosition;
     //! Position after moving

@@ -3,7 +3,7 @@
 This source file is part of OSTIS (Open Semantic Technology for Intelligent Systems)
 For the latest info, see http://www.ostis.net
 
-Copyright (c) 2010 OSTIS
+Copyright (c) 2010-2014 OSTIS
 
 OSTIS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -120,7 +120,7 @@ void SCgBus::updateShape()
 
     // update text position
     if (mTextItem)
-        mTextItem->setPos((mPoints.at(0) + mPoints.at(1)) / 2.f);
+        mTextItem->setTextPos((mPoints.at(0) + mPoints.at(1)) / 2.f);
 }
 
 void SCgBus::objectDelete(SCgObject *object)
